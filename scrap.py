@@ -19,5 +19,5 @@ def ScrapBlogs(urls):
             urls.add(x['href'])
 
     url_list = list(urls)
-    return url_list[1:6]
+    return url_list[1:7]
 

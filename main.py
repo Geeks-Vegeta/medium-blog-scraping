@@ -26,7 +26,9 @@ drive = deta.Drive(folder_name)
 
 
 
-def main():
+@app.lib.run(action="blogs")
+@app.lib.cron()
+def blogs_scrap(event):
 
     try:
 
@@ -59,9 +61,3 @@ def main():
 
     except Exception as e:
         print(e)
-    
-
-
-if __name__ == "__main__":
-    main()
-    

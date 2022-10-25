@@ -1,1 +1,18 @@
+name: Deploy to Deta
 
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ "main" ]
+
+jobs: 
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 #Be sure you check-out the repo first. Deta CLI needs access to the files
+      - name: 'show envs'
+        run : echo ${{ secrets.DETA_TOKEN }}
+      - uses: BogDAAAMN/deta-deploy-action@v1.0.1
+        with:
+          deta-access-token: ${{ secrets.DETA_TOKEN }} #Deta access token https://docs.deta.sh/docs/cli/auth
+          deta-name: 'medium_blog_automation' #Deta Micro name https://docs.deta.sh/docs/cli/commands/#deta-clon

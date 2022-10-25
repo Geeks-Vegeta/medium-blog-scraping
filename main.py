@@ -2,7 +2,7 @@ from scrap import ScrapBlogs
 import re
 import requests
 from bs4 import BeautifulSoup
-from deta import Deta
+from deta import Deta, app
 from dotenv import load_dotenv, find_dotenv
 import io
 import os

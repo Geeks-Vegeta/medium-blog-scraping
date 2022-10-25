@@ -2,11 +2,13 @@ from scrap import ScrapBlogs
 import re
 import requests
 from bs4 import BeautifulSoup
-from deta import Deta, app
+from deta import Deta
 from dotenv import load_dotenv, find_dotenv
 import io
 import os
 import datetime
+from deta import app
+
 
 load_dotenv(find_dotenv())
 

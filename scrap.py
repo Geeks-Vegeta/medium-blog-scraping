@@ -4,7 +4,7 @@ import re
 
 
 def ScrapBlogs(urls):
-    
+
     response = requests.get(str(urls)).text.encode('utf8').decode('ascii', 'ignore')
     soup = BeautifulSoup(response, 'html.parser')
     find_all_a = soup.find_all("a")
@@ -19,5 +19,5 @@ def ScrapBlogs(urls):
             urls.add(x['href'])
 
     url_list = list(urls)
-    return url_list[1:10]
+    return url_list[1:6]
 

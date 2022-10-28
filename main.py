@@ -23,7 +23,7 @@ new_folder_date=folder_date.replace("/", "_")
 deta = Deta(project_key)
 urls = ScrapBlogs(urls)
 
-folder_name = f"mediumblogs{new_folder_date}"
+folder_name = f"mediumblogs"
 drive = deta.Drive(folder_name)
 
 

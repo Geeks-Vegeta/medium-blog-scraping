@@ -31,7 +31,7 @@ drive = deta.Drive(folder_name)
 
 @app.lib.run(action="blog")
 @app.lib.cron()
-def blogs_scrap(events):
+def blogs_scrap(event):
 
     try:
 

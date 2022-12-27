@@ -8,6 +8,7 @@ import io
 import os
 import datetime
 from deta import app
+import markdownify
 
 
 load_dotenv(find_dotenv())
@@ -28,9 +29,9 @@ drive = deta.Drive(folder_name)
 
 
 
-@app.lib.run(action="blogs")
+@app.lib.run(action="blog")
 @app.lib.cron()
-def blogs_scrap(event):
+def blogs_scrap(events):
 
     try:
 
@@ -48,14 +49,14 @@ def blogs_scrap(event):
             response = requests.get(scrap_url).text.encode('utf8').decode('ascii', 'ignore')
             soup = BeautifulSoup(response, 'html.parser')
             find_section = soup.find("section")
+            markdown_section=markdownify.markdownify("""{0}""".format(find_section), heading_style="ATX")
             if find_section is None:
                 continue
             else:
                 with io.StringIO() as f:
                     f.write(f"{scrap_url}")
                     f.write("\n")
-                    f.write(str(find_section))
-
+                    f.write(markdown_section)
                     drive.put(f"{file_name}.md", f.getvalue())
 
         return "Scrapped Successfully"
